@@ -22,6 +22,7 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
+    useUnifiedTopology: true,
   })
   .then(() => {
     console.log(`😁 DB is connected!`);
@@ -31,7 +32,7 @@ mongoose
 const server = app.listen(PORT, (err) => {
   if (err) throw err;
 
-  console.log(`App listening on PORT  + ${PORT}, ${process.env.PW}`);
+  console.log(`App listening on PORT  + ${PORT}`);
 });
 
 //! Async err handler
