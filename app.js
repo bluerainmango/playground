@@ -1,8 +1,10 @@
 const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
-const app = express();
 const cors = require("cors");
+const AppError = require("./utils/appError");
+
+const app = express();
 
 // const productsRouter = require()
 app.enable("trust proxy");
@@ -30,6 +32,9 @@ app.use(express.static("client/build"));
 
 //! API routers
 // app.use("/api/v1/products", );
-app.all("*", () => {});
+
+app.all("*", (req, res, next) => {
+  next(new AppError(`❓ Cannot find URL: ${req.originalUrl}`), 404);
+});
 
 module.exports = app;
