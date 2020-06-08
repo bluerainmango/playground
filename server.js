@@ -1,20 +1,21 @@
-const mongoose = require("mongoose");
-require("dotenv").config();
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
-const DB = process.env.DATABASE.replace("<password>", process.env.DATABASE_PWD);
+const DB = process.env.DATABASE.replace('<password>', process.env.DATABASE_PWD);
 
 //! Sync err handler
-process.on("uncaughtException", (err) => {
+process.on('uncaughtException', (err) => {
   console.log(
-    "🚩 UncaughtException Error! Shutting down...",
+    '🚩 UncaughtException Error! Shutting down...',
     err.name,
-    err.message
+    err.message,
+    err
   );
   process.exit(1);
 });
 
-const app = require("./app");
+const app = require('./app');
 
 //! Connect DB
 mongoose
@@ -36,11 +37,12 @@ const server = app.listen(PORT, (err) => {
 });
 
 //! Async err handler
-process.on("unhandledRejection", (err) => {
+process.on('unhandledRejection', (err) => {
   console.log(
     `🚩 Unhandled rejection error! Shutting down...`,
     err.name,
-    err.message
+    err.message,
+    err
   );
 
   server.close(() => {
@@ -49,7 +51,7 @@ process.on("unhandledRejection", (err) => {
 });
 
 //! Heroku auto shutdown handler
-process.on("SIGTERM", () => {
+process.on('SIGTERM', () => {
   console.log(` Sigterm received. Shutting down...`);
 
   server.close(() => {
