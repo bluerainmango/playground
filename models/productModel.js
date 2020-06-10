@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const productSchema = new mongoose.Schema(
   {
@@ -47,7 +48,9 @@ const productSchema = new mongoose.Schema(
     priceDiscount: {
       type: Number,
       validate: {
-        validator: (val) => val < this.price,
+        validator: function (val) {
+          return val < this.price;
+        },
       },
       message: 'Discount price ({VALUE}) should be below regular price',
     },
@@ -72,12 +75,42 @@ const productSchema = new mongoose.Schema(
         ref: 'User',
       },
     ],
+    secretProduct: {
+      type: Boolean,
+      default: false,
+    },
   },
+
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
   }
 );
+
+//! Generate virtual variable: durationWeeks
+productSchema.virtual('durationWeeks').get(function () {
+  return this.duration / 7;
+});
+
+//! Generate slug for URL
+productSchema.pre('save', function (next) {
+  this.slug = slugify(this.name, { lower: true });
+  next();
+});
+
+//! Find docs that are not a secret product
+productSchema.pre(/^find/, function (next) {
+  this.find({ secretProduct: { $ne: true } });
+  next();
+});
+
+//! Populate embeded doc(developer)
+productSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'developer',
+  });
+  next();
+});
 
 const Product = mongoose.model('Product', productSchema);
 
