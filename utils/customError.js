@@ -1,9 +1,9 @@
-class AppError extends Error {
+class CustomError extends Error {
   constructor(message, statusCode) {
     super(message);
 
     this.statusCode = statusCode;
-    this.status = `${statusCode}`.charAt(0) === "4" ? "fail" : "error";
+    this.status = `${statusCode}`.charAt(0) === '4' ? 'fail' : 'error';
     this.isOperational = true;
 
     if (Error.captureStackTrace) {
@@ -12,4 +12,4 @@ class AppError extends Error {
   }
 }
 
-module.exports = AppError;
+module.exports = CustomError;

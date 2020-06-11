@@ -1,7 +1,6 @@
 const Product = require('../models/productModel');
+const catchAsync = require('../utils/catchAsync');
+const CustomError = require('../utils/customError');
+const crudFactory = require('../utils/crudFactory');
 
-exports.getAllProducts = (req, res, next) => {
-  res.status(200).json({
-    status: 'success',
-  });
-};
+exports.getAllProducts = crudFactory.getAll(Product);
