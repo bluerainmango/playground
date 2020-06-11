@@ -1,0 +1,38 @@
+[
+    {
+        "name": "DXP",
+        "level": "medium",
+        "duration": 15,
+        "price": 12000,
+        "summary": "A Flexible Platform to Fit Your Needs",
+        "description": "BlueRain's DXP is designed to work within your existing business processes and technologies to build a custom solution that uniquely meets your needs. Great experiences don’t just happen, create them with BlueRain DXP.",
+        "imageCover": "dxp.jpg"
+    },
+    {
+        "name": "DXP Cloud",
+        "level": "difficult",
+        "duration": 30,
+        "price": 25000,
+        "summary": "Enterprise PaaS Tailored for BlueRain DXP",
+        "description": "Meet the newest way for enterprises to deploy and manage BlueRain DXP. Launch your website with a secure, reliable PaaS solution that provides autoscaling, development tools, environments, monitoring and much more, all designed with years of in-house BlueRain expertise.",
+        "imageCover": "dxp-cloud.jpg"
+    },
+    {
+        "name": "Commerce",
+        "level": "easy",
+        "duration": 7,
+        "price": 8000,
+        "summary": "Best-in-Class B2B Commerce Experiences",
+        "description": "A platform that prioritizes the needs of B2B sellers can speed up time-to-market, decrease the need for custom development, and pave the way for a future-proof solution for your digital commerce strategy.",
+        "imageCover": "commerce.jpg"
+    },
+    {
+        "name": "Analytics Cloud",
+        "level": "medium",
+        "duration": 45,
+        "price": 38000,
+        "summary": "Discover insights into the modern customer journey",
+        "description": "Enhance your digital marketing with analytics that aggregate and visualize customer profile data and marketing asset performance for deep insights.",
+        "imageCover": "analytics.jpg"
+    }
+]
