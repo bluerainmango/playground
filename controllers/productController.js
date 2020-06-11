@@ -4,3 +4,6 @@ const CustomError = require('../utils/customError');
 const crudFactory = require('../utils/crudFactory');
 
 exports.getAllProducts = crudFactory.getAll(Product);
+exports.getOneProduct = crudFactory.getOne(Product);
+exports.createProduct = crudFactory.createOne(Product);
+exports.deleteProduct = crudFactory.deleteOne(Product);

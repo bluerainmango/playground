@@ -11,7 +11,7 @@ module.exports = class CustomQuery {
 
     const queryObj = { ...this.queryStr };
 
-    const fieldsToExclude = ['page', 'limit', 'fields'];
+    const fieldsToExclude = ['page', 'limit', 'fields', 'sort'];
     fieldsToExclude.forEach((el) => delete queryObj[el]);
 
     let queryString = JSON.stringify(queryObj);
