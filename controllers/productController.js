@@ -7,3 +7,4 @@ exports.getAllProducts = crudFactory.getAll(Product);
 exports.getOneProduct = crudFactory.getOne(Product);
 exports.createProduct = crudFactory.createOne(Product);
 exports.deleteProduct = crudFactory.deleteOne(Product);
+exports.updateProduct = crudFactory.updateOne(Product);
